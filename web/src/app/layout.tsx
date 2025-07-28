@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { Providers } from '@/components/providers'
 import { CommandPalette } from '@/components/ui/command-palette'
 import { AccessibilityIndicator, SkipToContent } from '@/components/ui/accessibility-indicator'
+import { ErrorBoundary } from '@/components/error-boundary'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,13 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers>
-          <SkipToContent />
-          {children}
-          <Toaster />
-          <CommandPalette />
-          <AccessibilityIndicator />
-        </Providers>
+        <ErrorBoundary>
+          <Providers>
+            <SkipToContent />
+            {children}
+            <Toaster />
+            <CommandPalette />
+            <AccessibilityIndicator />
+          </Providers>
+        </ErrorBoundary>
       </body>
     </html>
   )

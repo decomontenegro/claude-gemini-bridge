@@ -146,7 +146,7 @@ export function PremiumDialog({
                   {cancelText}
                 </Button3D>
                 <Button3D
-                  variant={variant === 'danger' ? 'destructive' : 'default'}
+                  variant={variant === 'danger' ? 'danger' : 'default'}
                   onClick={handleConfirm}
                   loading={loading || isConfirming}
                   className="flex-1"

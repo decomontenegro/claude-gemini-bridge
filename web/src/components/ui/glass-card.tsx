@@ -4,10 +4,11 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { motion, HTMLMotionProps } from 'framer-motion'
 
-export interface GlassCardProps extends HTMLMotionProps<"div"> {
+export interface GlassCardProps extends Omit<HTMLMotionProps<"div">, 'children'> {
   variant?: 'default' | 'claude' | 'gemini' | 'success' | 'error'
   glow?: boolean
   interactive?: boolean
+  children?: React.ReactNode
 }
 
 const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(

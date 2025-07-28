@@ -140,10 +140,10 @@ export function GlassSkeleton({ className }: { className?: string }) {
         className
       )}
       animate={{
-        beforeTranslateX: ['100%', '-100%'],
+        x: ['100%', '-100%'],
       }}
       transition={{
-        beforeTranslateX: {
+        x: {
           duration: 1.5,
           repeat: Infinity,
           ease: 'easeInOut',

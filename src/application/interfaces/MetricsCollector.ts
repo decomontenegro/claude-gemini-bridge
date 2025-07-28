@@ -1,5 +1,6 @@
 import { TaskType } from '../../domain/value-objects/TaskType';
 import { AdapterType } from '../../domain/value-objects/AdapterType';
+import { CompressionType } from '../../domain/value-objects/CompressionType';
 
 export interface TaskExecutionMetrics {
   adapter?: AdapterType;
@@ -34,6 +35,15 @@ export interface MetricTag {
   value: string;
 }
 
+export interface ContextCompressionMetrics {
+  compressionType: CompressionType;
+  originalSize: number;
+  compressedSize: number;
+  compressionRatio: number;
+  processingTime: number;
+  qualityScore: number;
+}
+
 export interface MetricsCollector {
   // Counter metrics (cumulative)
   increment(name: string, value?: number, tags?: MetricTag[]): void;
@@ -51,6 +61,7 @@ export interface MetricsCollector {
   recordTaskExecution(metrics: TaskExecutionMetrics): void;
   recordSystemMetrics(metrics: SystemMetrics): void;
   recordAdapterMetrics(metrics: AdapterMetrics): void;
+  recordContextCompression(metrics: ContextCompressionMetrics): void;
   
   // Metric queries
   getMetric(name: string, tags?: MetricTag[]): number | null;

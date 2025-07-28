@@ -116,7 +116,7 @@ export default function ComparisonPage() {
       steps: [
         {
           step: 1,
-          adapter: 'CLAUDE',
+          adapter: 'CLAUDE' as const,
           input: config.prompt,
           output: 'Initial analysis complete. Found 3 optimization opportunities...',
           executionTime: 1234,
@@ -124,7 +124,7 @@ export default function ComparisonPage() {
         },
         {
           step: 2,
-          adapter: 'GEMINI',
+          adapter: 'GEMINI' as const,
           input: 'Based on Claude\'s analysis...',
           output: 'Expanding on the optimization opportunities with implementation details...',
           executionTime: 1567,
@@ -132,7 +132,7 @@ export default function ComparisonPage() {
         },
         {
           step: 3,
-          adapter: 'CLAUDE',
+          adapter: 'CLAUDE' as const,
           input: 'Reviewing Gemini\'s implementation...',
           output: 'Final recommendations with best practices incorporated...',
           executionTime: 1890,

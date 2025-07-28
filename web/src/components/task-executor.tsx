@@ -20,6 +20,7 @@ import {
   FileSearch,
   CheckCircle
 } from 'lucide-react'
+import { CompressionButton } from './context-compression/CompressionButton'
 
 type TaskType = 'code' | 'search' | 'multimodal' | 'analysis' | 'validation' | 'ultrathink'
 type Orchestrator = 'auto' | 'claude' | 'gemini'
@@ -41,6 +42,7 @@ export function TaskExecutor() {
   const [executionMode, setExecutionMode] = useState<ExecutionMode>('single')
   const [isExecuting, setIsExecuting] = useState(false)
   const [result, setResult] = useState<any>(null)
+  const [taskId, setTaskId] = useState<string>('')
   const { toast } = useToast()
 
   const handleExecute = async () => {
@@ -57,7 +59,8 @@ export function TaskExecutor() {
     setResult(null)
 
     try {
-      const response = await fetch('/api/execute', {
+      // Try the real backend first, fallback to mock for demo
+      let response = await fetch('/api/execute', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,6 +74,24 @@ export function TaskExecutor() {
         }),
       })
 
+      // If backend is not available, use mock API
+      if (!response.ok && response.status === 500) {
+        console.log('Backend unavailable, using mock API')
+        response = await fetch('/api/execute-mock', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            type: taskType,
+            description,
+            orchestrator,
+            mode: executionMode,
+            context: {}
+          }),
+        })
+      }
+
       const data = await response.json()
       
       if (!response.ok) {
@@ -78,6 +99,7 @@ export function TaskExecutor() {
       }
 
       setResult(data)
+      setTaskId(data.taskId || `task_${Date.now()}`)
 
       toast({
         title: "Task completed",
@@ -258,11 +280,53 @@ export function TaskExecutor() {
                         <span className="font-medium">Task:</span> {result.data.description}
                       </div>
                     )}
+                    
+                    {/* Context Compression Button */}
+                    <div className="flex justify-end pt-4 border-t">
+                      <CompressionButton
+                        taskId={taskId}
+                        taskResult={{
+                          output: result.data.output,
+                          executedBy: result.executedBy,
+                          mode: result.mode,
+                          data: result.data
+                        }}
+                        onCompressionComplete={(compressionResult) => {
+                          toast({
+                            title: "Context compressed successfully!",
+                            description: `Achieved ${(compressionResult.compressionRatio * 100).toFixed(1)}% compression ratio`,
+                            variant: "success" as any
+                          })
+                        }}
+                      />
+                    </div>
                   </div>
                 ) : (
-                  <pre className="bg-muted p-4 rounded-lg overflow-auto">
-                    {JSON.stringify(result.data || result, null, 2)}
-                  </pre>
+                  <div className="space-y-4">
+                    <pre className="bg-muted p-4 rounded-lg overflow-auto">
+                      {JSON.stringify(result.data || result, null, 2)}
+                    </pre>
+                    
+                    {/* Context Compression Button for JSON results */}
+                    <div className="flex justify-end pt-4 border-t">
+                      <CompressionButton
+                        taskId={taskId}
+                        taskResult={{
+                          output: JSON.stringify(result.data || result, null, 2),
+                          executedBy: result.executedBy || 'unknown',
+                          mode: result.mode || 'single',
+                          data: result.data || result
+                        }}
+                        onCompressionComplete={(compressionResult) => {
+                          toast({
+                            title: "Context compressed successfully!",
+                            description: `Achieved ${(compressionResult.compressionRatio * 100).toFixed(1)}% compression ratio`,
+                            variant: "success" as any
+                          })
+                        }}
+                      />
+                    </div>
+                  </div>
                 )}
               </CardContent>
             </Card>

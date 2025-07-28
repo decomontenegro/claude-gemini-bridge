@@ -90,6 +90,11 @@ export function useAdvancedTheme() {
   }, [theme, mounted])
 
   const applyTheme = (themeVariant: ThemeVariant) => {
+    // Skip on server-side
+    if (typeof window === 'undefined' || !document) {
+      return
+    }
+    
     const config = themeConfigs[themeVariant]
     const root = document.documentElement
 
