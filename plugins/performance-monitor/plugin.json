@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "id": "performance-monitor",
+    "name": "Performance Monitor Plugin",
+    "version": "1.0.0",
+    "description": "Monitors and analyzes AI adapter performance and task execution metrics",
+    "author": "Claude-Gemini Bridge Team",
+    "license": "MIT",
+    "keywords": ["monitoring", "performance", "analytics", "metrics"]
+  },
+  "capabilities": {
+    "features": ["real-time-monitoring", "performance-analytics", "alerts", "reports"]
+  },
+  "main": "index.js",
+  "permissions": {
+    "filesystem": {
+      "read": ["./data"],
+      "write": ["./data", "./reports"]
+    }
+  },
+  "configuration": {
+    "properties": {
+      "enableRealTimeMonitoring": {
+        "type": "boolean",
+        "title": "Real-time Monitoring",
+        "description": "Enable real-time performance monitoring",
+        "default": true
+      },
+      "metricsRetentionDays": {
+        "type": "number",
+        "title": "Metrics Retention",
+        "description": "Number of days to retain metrics data",
+        "default": 30,
+        "minimum": 1,
+        "maximum": 365
+      },
+      "alertThresholds": {
+        "type": "object",
+        "title": "Alert Thresholds",
+        "description": "Thresholds for performance alerts",
+        "default": {
+          "responseTime": 5000,
+          "errorRate": 0.05,
+          "memoryUsage": 0.8
+        }
+      },
+      "reportSchedule": {
+        "type": "string",
+        "title": "Report Schedule",
+        "description": "Schedule for automated reports",
+        "enum": ["daily", "weekly", "monthly", "none"],
+        "default": "weekly"
+      }
+    }
+  }
+}

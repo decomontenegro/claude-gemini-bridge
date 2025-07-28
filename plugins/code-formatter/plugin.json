@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "id": "code-formatter",
+    "name": "Code Formatter Plugin",
+    "version": "1.0.0",
+    "description": "Automatically formats code results using Prettier",
+    "author": "Claude-Gemini Bridge Team",
+    "license": "MIT",
+    "homepage": "https://github.com/claude-gemini-bridge/plugins",
+    "keywords": ["formatter", "prettier", "code-style"]
+  },
+  "capabilities": {
+    "supportedTaskTypes": ["CODE_GENERATION", "REFACTORING"],
+    "features": ["format-javascript", "format-typescript", "format-python", "format-json"]
+  },
+  "main": "index.js",
+  "permissions": {
+    "filesystem": {
+      "read": ["./config"],
+      "write": ["./cache"]
+    }
+  },
+  "configuration": {
+    "properties": {
+      "autoFormat": {
+        "type": "boolean",
+        "title": "Auto Format",
+        "description": "Automatically format code results",
+        "default": true
+      },
+      "formatOnSave": {
+        "type": "boolean",
+        "title": "Format on Save",
+        "description": "Format code when saving results",
+        "default": false
+      },
+      "prettierConfig": {
+        "type": "object",
+        "title": "Prettier Configuration",
+        "description": "Custom Prettier configuration",
+        "default": {
+          "semi": true,
+          "singleQuote": true,
+          "tabWidth": 2
+        }
+      }
+    }
+  }
+}

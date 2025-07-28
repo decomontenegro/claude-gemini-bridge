@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "id": "task-templates",
+    "name": "Task Templates Plugin",
+    "version": "1.0.0",
+    "description": "Provides customizable task templates for common development tasks",
+    "author": "Claude-Gemini Bridge Team",
+    "license": "MIT",
+    "keywords": ["templates", "productivity", "shortcuts"]
+  },
+  "capabilities": {
+    "customTaskTypes": ["TEMPLATE"],
+    "features": ["create-template", "manage-templates", "template-variables"]
+  },
+  "main": "index.js",
+  "permissions": {
+    "filesystem": {
+      "read": ["./templates"],
+      "write": ["./templates"]
+    }
+  },
+  "configuration": {
+    "properties": {
+      "templatesPath": {
+        "type": "string",
+        "title": "Templates Directory",
+        "description": "Path to store custom templates",
+        "default": "./templates"
+      },
+      "enableShortcuts": {
+        "type": "boolean",
+        "title": "Enable Shortcuts",
+        "description": "Enable keyboard shortcuts for templates",
+        "default": true
+      },
+      "defaultVariables": {
+        "type": "object",
+        "title": "Default Variables",
+        "description": "Default values for template variables",
+        "default": {
+          "author": "Developer",
+          "date": "{{currentDate}}",
+          "project": "{{projectName}}"
+        }
+      }
+    }
+  }
+}

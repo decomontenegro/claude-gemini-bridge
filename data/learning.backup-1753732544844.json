@@ -1,0 +1,31 @@
+{
+  "patterns": [
+    [
+      "multimodal",
+      {
+        "taskType": "multimodal",
+        "successRate": 0.95,
+        "avgExecutionTime": 2000,
+        "preferredCLI": "gemini",
+        "conditions": {
+          "hasImages": true
+        }
+      }
+    ],
+    [
+      "code",
+      {
+        "taskType": "code",
+        "successRate": 0.93,
+        "avgExecutionTime": 1500,
+        "preferredCLI": "claude",
+        "conditions": {
+          "complexity": "high"
+        }
+      }
+    ]
+  ],
+  "feedbackHistory": [],
+  "lastUpdated": "2025-07-28T19:50:44.842Z",
+  "version": "1.0.0"
+}

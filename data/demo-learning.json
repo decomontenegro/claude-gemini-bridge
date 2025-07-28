@@ -1,0 +1,236 @@
+{
+  "patterns": [
+    [
+      "multimodal",
+      {
+        "taskType": "multimodal",
+        "successRate": 0.95,
+        "avgExecutionTime": 2000,
+        "preferredCLI": "gemini",
+        "conditions": {
+          "hasImages": true
+        }
+      }
+    ],
+    [
+      "code",
+      {
+        "taskType": "code",
+        "successRate": 0.93,
+        "avgExecutionTime": 1500,
+        "preferredCLI": "claude",
+        "conditions": {
+          "complexity": "high"
+        }
+      }
+    ],
+    [
+      "code-gen-1",
+      {
+        "taskType": "code-gen-1",
+        "successRate": 1,
+        "avgExecutionTime": 1200,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "code-gen-2",
+      {
+        "taskType": "code-gen-2",
+        "successRate": 1,
+        "avgExecutionTime": 1500,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "multimodal-1",
+      {
+        "taskType": "multimodal-1",
+        "successRate": 1,
+        "avgExecutionTime": 2000,
+        "preferredCLI": "gemini",
+        "conditions": {}
+      }
+    ],
+    [
+      "code-gen-3",
+      {
+        "taskType": "code-gen-3",
+        "successRate": 0,
+        "avgExecutionTime": 3000,
+        "preferredCLI": "gemini",
+        "conditions": {}
+      }
+    ],
+    [
+      "analysis-1",
+      {
+        "taskType": "analysis-1",
+        "successRate": 1,
+        "avgExecutionTime": 1800,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "multimodal-2",
+      {
+        "taskType": "multimodal-2",
+        "successRate": 1,
+        "avgExecutionTime": 2200,
+        "preferredCLI": "gemini",
+        "conditions": {}
+      }
+    ],
+    [
+      "validation-1",
+      {
+        "taskType": "validation-1",
+        "successRate": 1,
+        "avgExecutionTime": 800,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "additional-0",
+      {
+        "taskType": "additional-0",
+        "successRate": 1,
+        "avgExecutionTime": 2183,
+        "preferredCLI": "gemini",
+        "conditions": {}
+      }
+    ],
+    [
+      "additional-1",
+      {
+        "taskType": "additional-1",
+        "successRate": 1,
+        "avgExecutionTime": 615,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "additional-2",
+      {
+        "taskType": "additional-2",
+        "successRate": 1,
+        "avgExecutionTime": 1978,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "additional-3",
+      {
+        "taskType": "additional-3",
+        "successRate": 1,
+        "avgExecutionTime": 1457,
+        "preferredCLI": "claude",
+        "conditions": {}
+      }
+    ],
+    [
+      "additional-4",
+      {
+        "taskType": "additional-4",
+        "successRate": 0,
+        "avgExecutionTime": 2026,
+        "preferredCLI": "gemini",
+        "conditions": {}
+      }
+    ]
+  ],
+  "feedbackHistory": [
+    {
+      "taskId": "code-gen-1",
+      "success": true,
+      "executionTime": 1200,
+      "cli": "claude",
+      "userSatisfaction": 5
+    },
+    {
+      "taskId": "code-gen-2",
+      "success": true,
+      "executionTime": 1500,
+      "cli": "claude",
+      "userSatisfaction": 4
+    },
+    {
+      "taskId": "multimodal-1",
+      "success": true,
+      "executionTime": 2000,
+      "cli": "gemini",
+      "userSatisfaction": 5
+    },
+    {
+      "taskId": "code-gen-3",
+      "success": false,
+      "executionTime": 3000,
+      "cli": "gemini",
+      "userSatisfaction": 2
+    },
+    {
+      "taskId": "analysis-1",
+      "success": true,
+      "executionTime": 1800,
+      "cli": "claude",
+      "userSatisfaction": 5
+    },
+    {
+      "taskId": "multimodal-2",
+      "success": true,
+      "executionTime": 2200,
+      "cli": "gemini",
+      "userSatisfaction": 4
+    },
+    {
+      "taskId": "validation-1",
+      "success": true,
+      "executionTime": 800,
+      "cli": "claude",
+      "userSatisfaction": 5
+    },
+    {
+      "taskId": "additional-0",
+      "success": true,
+      "executionTime": 2183,
+      "cli": "gemini",
+      "userSatisfaction": 3
+    },
+    {
+      "taskId": "additional-1",
+      "success": true,
+      "executionTime": 615,
+      "cli": "claude",
+      "userSatisfaction": 2
+    },
+    {
+      "taskId": "additional-2",
+      "success": true,
+      "executionTime": 1978,
+      "cli": "claude",
+      "userSatisfaction": 2
+    },
+    {
+      "taskId": "additional-3",
+      "success": true,
+      "executionTime": 1457,
+      "cli": "claude",
+      "userSatisfaction": 1
+    },
+    {
+      "taskId": "additional-4",
+      "success": false,
+      "executionTime": 2026,
+      "cli": "gemini",
+      "userSatisfaction": 4
+    }
+  ],
+  "lastUpdated": "2025-07-23T20:51:08.872Z",
+  "version": "1.0.0"
+}

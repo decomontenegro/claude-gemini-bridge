@@ -1,0 +1,122 @@
+/* Midnight Theme */
+.midnight {
+  --background: 220 40% 3%;
+  --foreground: 0 0% 95%;
+  --card: 220 35% 8%;
+  --card-foreground: 0 0% 95%;
+  --popover: 220 35% 8%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 280 100% 70%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 220 30% 15%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 220 30% 15%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 260 100% 70%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 30% 18%;
+  --input: 220 30% 18%;
+  --ring: 280 100% 70%;
+}
+
+/* Aurora Theme */
+.aurora {
+  --background: 220 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 220 25% 13%;
+  --card-foreground: 0 0% 98%;
+  --popover: 220 25% 13%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 160 100% 50%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 320 100% 50%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 220 20% 18%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 40 100% 50%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 25% 23%;
+  --input: 220 25% 23%;
+  --ring: 160 100% 50%;
+}
+
+/* Synthwave Theme */
+.synthwave {
+  --background: 260 40% 10%;
+  --foreground: 0 0% 98%;
+  --card: 260 35% 15%;
+  --card-foreground: 0 0% 98%;
+  --popover: 260 35% 15%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 320 100% 60%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 180 100% 50%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 260 30% 20%;
+  --muted-foreground: 0 0% 75%;
+  --accent: 40 100% 60%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 260 30% 25%;
+  --input: 260 30% 25%;
+  --ring: 320 100% 60%;
+}
+
+/* Theme-specific animations and effects */
+.midnight {
+  background-image: 
+    radial-gradient(ellipse at top, hsla(280, 100%, 70%, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, hsla(260, 100%, 70%, 0.1) 0%, transparent 50%);
+}
+
+.aurora {
+  background-image: 
+    radial-gradient(ellipse at top left, hsla(160, 100%, 50%, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, hsla(320, 100%, 50%, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, hsla(40, 100%, 50%, 0.05) 0%, transparent 50%);
+}
+
+.synthwave {
+  background-image: 
+    linear-gradient(180deg, hsla(320, 100%, 60%, 0.1) 0%, transparent 30%),
+    linear-gradient(90deg, hsla(180, 100%, 50%, 0.05) 0%, transparent 50%);
+}
+
+/* Theme-specific glassmorphism */
+.midnight .glass-card {
+  background: hsla(220, 40%, 10%, 0.7);
+  border-color: hsla(280, 100%, 70%, 0.2);
+}
+
+.aurora .glass-card {
+  background: hsla(220, 30%, 15%, 0.7);
+  border-color: hsla(160, 100%, 50%, 0.2);
+}
+
+.synthwave .glass-card {
+  background: hsla(260, 40%, 20%, 0.7);
+  border-color: hsla(320, 100%, 60%, 0.2);
+}
+
+/* Theme-specific glow effects */
+.midnight .glow-claude {
+  box-shadow: 0 0 40px hsla(280, 100%, 70%, 0.6);
+}
+
+.aurora .glow-claude {
+  box-shadow: 0 0 40px hsla(160, 100%, 50%, 0.6);
+}
+
+.synthwave .glow-claude {
+  box-shadow: 0 0 40px hsla(320, 100%, 60%, 0.6);
+}
+
+/* Theme transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
