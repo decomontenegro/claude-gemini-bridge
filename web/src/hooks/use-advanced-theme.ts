@@ -74,7 +74,7 @@ const themeConfigs: Record<ThemeVariant, ThemeConfig> = {
 }
 
 export function useAdvancedTheme() {
-  const { theme, setTheme } = useTheme()
+  const { theme = 'dark', setTheme } = useTheme()
   const [currentTheme, setCurrentTheme] = useState<ThemeVariant>('dark')
   const [mounted, setMounted] = useState(false)
 
@@ -84,8 +84,12 @@ export function useAdvancedTheme() {
 
   useEffect(() => {
     if (mounted && theme) {
-      setCurrentTheme(theme as ThemeVariant)
-      applyTheme(theme as ThemeVariant)
+      // Validate theme is a valid ThemeVariant
+      const validTheme = Object.keys(themeConfigs).includes(theme) 
+        ? theme as ThemeVariant 
+        : 'dark'
+      setCurrentTheme(validTheme)
+      applyTheme(validTheme)
     }
   }, [theme, mounted])
 
@@ -96,12 +100,19 @@ export function useAdvancedTheme() {
     }
     
     const config = themeConfigs[themeVariant]
+    if (!config) {
+      console.warn(`Theme config not found for: ${themeVariant}`)
+      return
+    }
+    
     const root = document.documentElement
 
     // Apply CSS variables
-    Object.entries(config.colors).forEach(([key, value]) => {
-      root.style.setProperty(`--${key}`, value)
-    })
+    if (config.colors) {
+      Object.entries(config.colors).forEach(([key, value]) => {
+        root.style.setProperty(`--${key}`, value)
+      })
+    }
 
     // Apply theme class
     Object.values(themeConfigs).forEach((t) => {
@@ -121,7 +132,7 @@ export function useAdvancedTheme() {
     changeTheme(themes[nextIndex])
   }
 
-  const getThemeConfig = () => themeConfigs[currentTheme]
+  const getThemeConfig = () => themeConfigs[currentTheme] || themeConfigs.dark
 
   const isCurrentTheme = (themeToCheck: ThemeVariant) => currentTheme === themeToCheck
 
